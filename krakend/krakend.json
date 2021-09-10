@@ -1,0 +1,34 @@
+{
+  "version": 2,
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "plugin": {
+    "pattern": ".so",
+    "folder": "/etc/krakend/plugin"
+  },
+  "extra_config": {
+    "github_com/devopsfaith/krakend/transport/http/server/handler": {
+      "name": "turboRappiMiddleware"
+    }
+  },
+  "endpoints": [
+    {
+      "endpoint": "api/test",
+      "method": "GET",
+      "extra_config": {},
+      "output_encoding": "json",
+      "concurrent_calls": 1,
+      "headers_to_pass": [
+        "X-Friend-User"
+      ],
+      "querystring_params": [],
+      "backend": [
+        {
+          "method": "GET",
+          "host": [ "https://localhost:3001" ],
+          "url_pattern": "/api/test"
+        }
+      ]
+    }
+  ]
+}

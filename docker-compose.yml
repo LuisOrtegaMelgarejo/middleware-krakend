@@ -1,0 +1,9 @@
+version: "3"
+services:
+  krakend_ce:
+    build: .
+    volumes:
+      - ./krakend:/etc/krakend
+    ports:
+      - "8080:8080"
+      - "8090:8090"
